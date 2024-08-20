@@ -1,0 +1,265 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+@font-face {
+  font-family: 'CustomFont';
+  src: url('../styles/fonts/CustomFont.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+ 
+body {
+  height: 100vh;
+  font-family: 'CustomFont', sans-serif;
+  /* overflow-x: hidden; */
+  display: flex;
+  justify-content: flex-start;
+  align-items: center ;
+}
+/* changes */
+ul {
+  transform-style:preserve-3d;
+}
+
+.projectLi {
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-start;
+  width: 100vw;
+  height: 220px;
+  transform-style: preserve-3d;
+} 
+
+.projectContainer {
+  position: relative;
+  
+  display: flex;
+  flex-direction: column;
+  justify-items: flex-end;
+  text-align: right;
+
+  height: fit-content;
+  font-weight: 1000;
+  line-height: 0.8em;
+  white-space: pre-wrap;
+  z-index: 1;
+}
+.projectContainer > {
+  visibility: hidden;
+}
+ 
+.projectContainer::before,
+.projectContainer::after {
+  content: attr(data-text);
+  position: absolute;
+  display:flex;
+  align-items: flex-start;
+  font-size: 150px;
+  font-weight: 500;
+  line-height: 0.8em;
+  top: 0;
+  right: 0;
+  white-space: pre-wrap;
+  transform-style: preserve-3d;
+  transform-origin: right center;
+  transition: transform 1s ease ;
+  text-align: right;
+}
+
+.projectContainer::before {
+  transform: perspective(900px) rotateY(60deg) translateZ(0);
+  opacity: 1;
+  z-index: -1;
+}
+
+.projectContainer::after {
+  transform: perspective(900px) translateZ(0px);
+  opacity: 0;
+  z-index: -2;
+  -webkit-text-fill-color: transparent;
+  -webkit-text-stroke-width: 4px;
+}
+
+.projectLi .projectContainer:hover::before {
+  opacity: 0;
+  z-index: -2;
+  transform: perspective(900px) rotateY(-25deg) translateZ(75px) ;
+}
+
+.projectLi .projectContainer:hover::after {
+  opacity: 1;
+  z-index: 1;
+  transform: perspective(900px) rotateY(-25deg) translateZ(75px) ;
+}
+
+
+.projectLi .projectContainer:not(:hover)::before,
+.projectLi .projectContainer:not(:hover)::after {
+  transform: perspective(900px) rotateY(-35deg) translateZ(50px);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* 
+
+main code
+
+
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+ body{
+  overflow-x: hidden;
+  height: 100vh;
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-start;
+}
+
+ul{
+  list-style: none;
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 20em;
+  text-align: end;
+  }
+  
+.perspective-text {
+  position: relative;
+  display: inline-block;
+}
+
+.perspective-text:before {
+  content: "PROJECTS";
+  position: absolute;
+  transition: transform 1s;
+  transition-timing-function: ease-in-out;
+  transform: perspective(500px) rotateY(-17.5deg) translate(-50%, -50%);
+  font-size: 250px;
+  font-weight: 900;
+  font-family: Arial, sans-serif;
+  white-space: nowrap;
+  top: 50%;
+  left: 50%;
+  opacity: 1;
+  
+}
+
+.perspective-text:after {
+  content: "PROJECTS";
+  position: absolute;
+  transition: transform 2s;
+  transform: perspective(500px) rotateY(-12.5deg) translate(-50%, -50%);
+  font-size: 250px;
+  font-weight: 900;
+  font-family: Arial, sans-serif;
+  white-space: nowrap;
+  top: 50%;
+  left: 50%;
+  opacity: 0;
+  
+}
+
+.perspective-text:hover:before {
+  opacity: 0;
+  transform: perspective(500px) rotateY(-12.5deg) translate(-50%, -50%) ;
+}
+
+.perspective-text:hover:after {
+  opacity: 1;
+  -webkit-text-fill-color: transparent;
+  -webkit-text-stroke-width: 4px;  
+  
+}
+
+/*
+
+backup code
+
+
+
+.perspective-text {
+  position: relative;
+  display: inline-block;
+  font-size: 250px;
+  font-weight: 900;
+  font-family: Arial, sans-serif;
+  white-space: nowrap;
+  line-height: 0.8em;
+  text-align: end;
+}
+
+.text-before,
+.text-after { 
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  transition: transform 1s, opacity 1s;
+}
+
+.text-before {
+  content: attr(data-text);
+  opacity: 1;
+  transform: perspective(500px) rotateY(-17.5deg) translate(-50%, -50%);
+  
+}
+
+.text-after {
+  content: attr(data-text);
+  opacity: 0;
+  transform: perspective(500px) rotateY(-12.5deg) translate(-50%, -50%);
+  -webkit-text-fill-color: transparent;
+  -webkit-text-stroke-width: 4px;
+}
+
+.perspective-text:hover .text-before {
+  opacity: 0;
+  transform: perspective(500px) rotateY(-12.5deg) translate(-50%, -50%);
+  
+}
+
+.perspective-text:hover .text-after {
+  opacity: 1;
+}
